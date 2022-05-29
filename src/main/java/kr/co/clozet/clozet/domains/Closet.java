@@ -22,20 +22,17 @@ import java.util.List;
  * -----------------------------------------------------------
  * 2022-05-27        kimyunseop       최초 생성
  */
-@Table(name = "closet")
+@Table(name = "closets")
 @Builder
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Closet {
-    @Id @GeneratedValue @Column(name = "closet_no")
-    private long closetNo;
+    @Id @GeneratedValue @Column(name = "closet_id")
+    private long closetId;
     @Column @NotNull private String clothesClassfication;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    Users user;
+    @Column private String userId;
 
     @OneToMany(mappedBy = "closet")
     List<Clothes> clothes = new ArrayList<>();

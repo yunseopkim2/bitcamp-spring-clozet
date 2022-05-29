@@ -27,24 +27,26 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "boards")
 @Entity
-public class Boards {
-    @Id @GeneratedValue @Column(name = "board_no")
-    private long boardNo;
-    @Column @NotNull private boolean like;
+public class Board {
+    @Id @GeneratedValue @Column(name = "board_id")
+    private long boardId;
+    @Column private boolean likes;
+    @Column private String userId;
     @Column @NotNull private String season;
-    @Column @NotNull private String color;
+    @Column private String color;
     @Column @NotNull private boolean open;
-    @Column @NotNull private String picture;
-    @Column @NotNull private String comment;
+    @Column private String picture;
+    @Column private String comment;
     @Column @NotNull private String height;
     @Column @NotNull private String weight;
-    @Column @NotNull private String createdDate;
+    @Column(name = "created_date") @NotNull private String createdDate;
     @Column @NotNull private String inquiry;
     @Column @NotNull private String title;
     @Column @NotNull private String contents;
 
-    @OneToMany(mappedBy = "boards")
-    List<Articles> articles = new ArrayList<>();
-    @OneToMany(mappedBy = "boards")
+    @OneToMany(mappedBy = "board")
+    List<Article> article = new ArrayList<>();
+
+    @OneToMany(mappedBy = "board")
     List<Clothes> clothes = new ArrayList<>();
 }

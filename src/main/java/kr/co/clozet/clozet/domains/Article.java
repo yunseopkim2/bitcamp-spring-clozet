@@ -27,11 +27,11 @@ import javax.persistence.*;
 @Table(name = "articles")
 @Component
 @Entity
-public class Articles {
-    @Id @Column(name = "article_no")
-    @GeneratedValue private long articleNo;
+public class Article {
+    @Id @Column(name = "article_id")
+    @GeneratedValue private long articleId;
     @Column @NotNull private String title;
-    @Column @NotNull private String creatDate;
+    @Column(name = "written_date") @NotNull private String writtenDate;
     @Column @NotNull private String inquiry;
     @Column @NotNull private String open;
     @Column @NotNull private String contents;
@@ -41,9 +41,10 @@ public class Articles {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    Users user;
+    private User user;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_no")
-    Boards boards;
+    @JoinColumn(name = "board_id")
+    private Board board;
 
 }

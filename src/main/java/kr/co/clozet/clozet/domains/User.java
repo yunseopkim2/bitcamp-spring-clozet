@@ -27,7 +27,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Getter
-public class Users {
+public class User {
     @Id @GeneratedValue @Column(name = "user_id")
     private long userId;
     @Column @NotNull private String username;
@@ -37,10 +37,10 @@ public class Users {
     @Column @NotNull private String nickname;
     @Column @NotNull private String email;
     @Column @NotNull private String phone;
-    @OneToMany(mappedBy = "users")
-    List<Articles> articles = new ArrayList<>();
-    @OneToMany(mappedBy = "users")
-    List<Closet> closet = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    List<Article> articles = new ArrayList<>();
+
     @ElementCollection(fetch = FetchType.EAGER)
     public List<Role> roles;
 

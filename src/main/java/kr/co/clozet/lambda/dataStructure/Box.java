@@ -1,6 +1,6 @@
 package kr.co.clozet.lambda.dataStructure;
 
-import kr.co.clozet.clozet.domains.Users;
+import kr.co.clozet.clozet.domains.User;
 import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -50,9 +50,9 @@ public class Box<K, V>{
     }
     //User custom
     // 이름으로 검색된 회원 목록요청시(필터가 없는경우 리엑트에 던진다)
-    public List<Users> findByUserName(String name){
-        List<Users> ls = new ArrayList<>();
-        for(Users v: ls ){
+    public List<User> findByUserName(String name){
+        List<User> ls = new ArrayList<>();
+        for(User v: ls ){
             if (name.equals(v.getName())){ls.add(v);}
         }
         return ls;
@@ -66,17 +66,17 @@ public class Box<K, V>{
             return ls;
         }
     // 테이블 행목록요청시
-    public List<Users> findAllUserList(){
-        List<Users> ls = new ArrayList<>();
+    public List<User> findAllUserList(){
+        List<User> ls = new ArrayList<>();
         for(Map.Entry<K, V> e: map.entrySet()){
-            ls.add((Users)e.getValue());
+            ls.add((User)e.getValue());
         }
         return ls;
     }
     // 이름으로 검색된 회원 목록요청시
-    public Map<String, Users> mapFindByUesrName(String name){
-        Map<String, Users> map = new HashMap<>();
-        for(Map.Entry<String, Users> e: map.entrySet()){
+    public Map<String, User> mapFindByUesrName(String name){
+        Map<String, User> map = new HashMap<>();
+        for(Map.Entry<String, User> e: map.entrySet()){
             if(name.equals(e.getValue().getName())) map.put(e.getKey(), e.getValue());
         }
 

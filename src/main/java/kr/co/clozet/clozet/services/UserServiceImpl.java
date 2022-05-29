@@ -3,7 +3,7 @@ package kr.co.clozet.clozet.services;
 import kr.co.clozet.auth.configs.AuthProvider;
 import kr.co.clozet.auth.domains.Messenger;
 import kr.co.clozet.auth.exception.SecurityRuntimeException;
-import kr.co.clozet.clozet.domains.Users;
+import kr.co.clozet.clozet.domains.User;
 import kr.co.clozet.clozet.domains.UserDTO;
 import kr.co.clozet.clozet.repositories.UserRepository;
 import kr.co.clozet.lambda.dataStructure.Box;
@@ -16,7 +16,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserService {
         try{
             UserDTO returnUser = new UserDTO();
             String username = paramUser.getUsername();
-            Users findUser = repository.findByUsername(username).orElse(null);
+            User findUser = repository.findByUsername(username).orElse(null);
             if (findUser != null){
                 boolean checkPassword = encoder.matches(paramUser.getPassword(), findUser.getPassword());
                 if (checkPassword){
@@ -65,17 +64,17 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<Users> findAll() {
+    public List<User> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public List<Users> findAll(Sort sort) {
+    public List<User> findAll(Sort sort) {
         return repository.findAll(sort);
     }
 
     @Override
-    public Page<Users> findAll(Pageable pageable) {
+    public Page<User> findAll(Pageable pageable) {
         return repository.findAll(pageable);
     }
 
@@ -86,11 +85,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Messenger update(Users user) {
+    public Messenger update(User user) {
         return Messenger.builder().build();
     }
     @Override
-    public Messenger delete(Users user) {
+    public Messenger delete(User user) {
         repository.delete(user);
        return Messenger.builder().build();
     }
@@ -102,7 +101,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Optional<Users> findById(String userid) {
+    public Optional<User> findById(String userid) {
         return Optional.empty();
     }
 
@@ -119,9 +118,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Users> findByUserName(String name) {
-        List<Users> ls = repository.findAll();
-        Box<String, Users> box = new Box<>();
+    public List<User> findByUserName(String name) {
+        List<User> ls = repository.findAll();
+        Box<String, User> box = new Box<>();
         //ls = box.findByUserName(ls, name);
         //ls.stream().filter(...);
         return null;

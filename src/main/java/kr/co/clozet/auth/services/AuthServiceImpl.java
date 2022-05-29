@@ -1,8 +1,7 @@
 package kr.co.clozet.auth.services;
 
-import kr.co.clozet.clozet.domains.Users;
+import kr.co.clozet.clozet.domains.User;
 import kr.co.clozet.clozet.repositories.UserRepository;
-import kr.co.clozet.auth.domains.Auth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -29,7 +28,7 @@ public class AuthServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Users> user = Optional.ofNullable(repository.findByUsername(username))
+        Optional<User> user = Optional.ofNullable(repository.findByUsername(username))
                 .orElseThrow(()-> new UsernameNotFoundException(username+"에 해당하는 객체가 존재하지 않습니다."));
         return null;
     }

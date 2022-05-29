@@ -1,6 +1,6 @@
 package kr.co.clozet.auth.domains;
 
-import kr.co.clozet.clozet.domains.Users;
+import kr.co.clozet.clozet.domains.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import net.minidev.json.annotate.JsonIgnore;
@@ -31,7 +31,7 @@ public class Auth implements UserDetails{
     private final String name;
     private final String email;
 
-    public static Auth build(Users user) {
+    public static Auth build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
                 .map(role -> new SimpleGrantedAuthority(role.getAuthority()))
                 .collect(Collectors.toList());

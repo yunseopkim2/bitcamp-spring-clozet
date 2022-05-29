@@ -2,7 +2,7 @@ package kr.co.clozet.clozet.controllers;
 
 import io.swagger.annotations.*;
 import kr.co.clozet.auth.domains.Messenger;
-import kr.co.clozet.clozet.domains.Users;
+import kr.co.clozet.clozet.domains.User;
 import kr.co.clozet.clozet.domains.UserDTO;
 import kr.co.clozet.clozet.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -50,13 +50,13 @@ public class UserController {
     public ResponseEntity<Messenger> logout() {return ResponseEntity.ok(service.logout());}
 
     @GetMapping("/findAll")
-    public ResponseEntity<List<Users>> findAll() {return ResponseEntity.ok(service.findAll());}
+    public ResponseEntity<List<User>> findAll() {return ResponseEntity.ok(service.findAll());}
 
     @GetMapping("/findAll/sort")
-    public ResponseEntity<List<Users>> findAll(Sort sort) {return ResponseEntity.ok(service.findAll(sort));}
+    public ResponseEntity<List<User>> findAll(Sort sort) {return ResponseEntity.ok(service.findAll(sort));}
 
     @GetMapping("/findAll/pageable")
-    public ResponseEntity<Page<Users>> findAll(Pageable pageable) {
+    public ResponseEntity<Page<User>> findAll(Pageable pageable) {
         return ResponseEntity.ok(service.findAll(pageable));}
 
     @GetMapping("/count")
@@ -65,12 +65,12 @@ public class UserController {
 
 
     @DeleteMapping("/delete")
-    public ResponseEntity<Messenger> delete(@RequestBody Users user) {
+    public ResponseEntity<Messenger> delete(@RequestBody User user) {
         return ResponseEntity.ok(service.delete(user));}
 
 
     @GetMapping("/findById/{userid}")
-    public ResponseEntity<Optional<Users>> findById(@PathVariable String userid) {
+    public ResponseEntity<Optional<User>> findById(@PathVariable String userid) {
         return ResponseEntity.ok(service.findById(userid));}
 
     @GetMapping("/existsById/{userid}")
@@ -81,7 +81,7 @@ public class UserController {
     public ResponseEntity<Messenger> getOne(@PathVariable Long id) {
         return ResponseEntity.ok(service.getOne(id));}
     @PutMapping("/update")
-    public ResponseEntity<Messenger> update(@RequestBody Users user) {
+    public ResponseEntity<Messenger> update(@RequestBody User user) {
 
         return ResponseEntity.ok(service.update(user));
     }

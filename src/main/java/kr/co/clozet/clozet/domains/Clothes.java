@@ -8,8 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * packageName    : kr.co.clozet.clozet.domains
@@ -29,17 +27,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Clothes {
-    @Id @GeneratedValue @Column(name = "clothes_no")
-    private long clothesNo;
+    @Id @GeneratedValue @Column(name = "clothes_id")
+    private long clothesId;
     @Column @NotNull private String season;
     @Column @NotNull private String color;
     @Column @NotNull private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "closet_no")
-    Closet closet;
+    @JoinColumn(name = "closet_id")
+    private Closet closet;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_no")
-    Boards boards;
+    @JoinColumn(name = "board_id")
+    private Board board;
 }
