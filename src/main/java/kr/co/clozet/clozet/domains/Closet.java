@@ -37,4 +37,8 @@ public class Closet {
     @OneToMany(mappedBy = "closet")
     List<Clothes> clothes = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
