@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findByUserName(String name) {
+    public List<User> findByUserName(String username) {
         List<User> ls = repository.findAll();
         Box<String, User> box = new Box<>();
         //ls = box.findByUserName(ls, name);

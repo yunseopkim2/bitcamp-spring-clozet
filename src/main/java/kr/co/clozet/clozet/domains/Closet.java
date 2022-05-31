@@ -32,7 +32,6 @@ public class Closet {
     @Id @GeneratedValue @Column(name = "closet_id")
     private long closetId;
     @Column @NotNull private String clothesClassfication;
-    @Column private String userId;
 
     @OneToMany(mappedBy = "closet")
     List<Clothes> clothes = new ArrayList<>();

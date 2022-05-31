@@ -30,7 +30,7 @@ public interface UserService {
     Messenger getOne(Long id);
     //custom
 
-    List<User> findByUserName(String name);
+    List<User> findByUserName(String username);
 
     Messenger update(User user);
 }
