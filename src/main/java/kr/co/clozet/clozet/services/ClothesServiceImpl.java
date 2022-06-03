@@ -57,7 +57,7 @@ public class ClothesServiceImpl implements ClothesService{
     }
 
     @Override
-    public Messenger save(Clothes user) {
+    public Messenger save(Clothes clothes) {
         return null;
     }
 
@@ -77,12 +77,12 @@ public class ClothesServiceImpl implements ClothesService{
     }
 
     @Override
-    public List<User> findByUserName(String username) {
+    public Optional<Clothes> findByUserId(String userId) {
         return null;
     }
 
     @Override
-    public Messenger update(User user) {
+    public Messenger update(Clothes clothes) {
         return null;
     }
 }

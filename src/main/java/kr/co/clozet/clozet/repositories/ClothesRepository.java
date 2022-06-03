@@ -15,6 +15,10 @@ import org.springframework.stereotype.Repository;
  * -----------------------------------------------------------
  * 2022-05-31        kimyunseop       최초 생성
  */
+interface ClothesRepositoryCustom{
+
+}
+
 @Repository
 public interface ClothesRepository extends JpaRepository<Clothes, Long> {
 }

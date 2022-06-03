@@ -31,7 +31,7 @@ public interface ClothesService {
 
     Messenger delete(Clothes clothes);
 
-    Messenger save(Clothes user);
+    Messenger save(Clothes clothes);
 
     Optional<Clothes> findByDate(String date);
 
@@ -40,7 +40,7 @@ public interface ClothesService {
     Messenger getOne(Long id);
     //custom
 
-    List<User> findByUserName(String username);
+    Optional<Clothes> findByUserId(String userId);
 
-    Messenger update(User user);
+    Messenger update(Clothes clothes);
 }

@@ -15,6 +15,9 @@ import org.springframework.stereotype.Repository;
  * -----------------------------------------------------------
  * 2022-05-31        kimyunseop       최초 생성
  */
+interface ArticleRepositoryCustom{
+
+}
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long> {
 }

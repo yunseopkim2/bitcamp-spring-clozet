@@ -88,6 +88,12 @@ public class UserServiceImpl implements UserService {
     public Messenger update(User user) {
         return Messenger.builder().build();
     }
+
+    @Override
+    public void removeUser(String userId) {
+
+    }
+
     @Override
     public Messenger delete(User user) {
         repository.delete(user);
@@ -102,7 +108,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> findById(String userid) {
-        return Optional.empty();
+        return null;
     }
 
     @Override

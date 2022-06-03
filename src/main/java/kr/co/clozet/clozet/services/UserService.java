@@ -33,4 +33,6 @@ public interface UserService {
     List<User> findByUserName(String username);
 
     Messenger update(User user);
+
+    void removeUser(String userId);
 }
