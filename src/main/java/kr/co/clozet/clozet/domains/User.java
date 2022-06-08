@@ -44,7 +44,7 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     public List<Role> roles;
 
-    @OneToOne(mappedBy = "user")
-    private Closet closet;
+    @OneToMany(mappedBy = "user")
+    List<Clothes> clothes = new ArrayList<>();
 
 }

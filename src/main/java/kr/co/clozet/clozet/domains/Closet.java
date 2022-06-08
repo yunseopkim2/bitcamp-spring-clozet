@@ -36,8 +36,8 @@ public class Closet {
     @OneToMany(mappedBy = "closet")
     List<Clothes> clothes = new ArrayList<>();
 
-    @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
 
 }

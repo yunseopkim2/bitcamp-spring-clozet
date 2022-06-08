@@ -48,5 +48,5 @@ public class Board {
     List<Article> article = new ArrayList<>();
 
     @OneToMany(mappedBy = "board")
-    List<Clothes> clothes = new ArrayList<>();
+    List<Closet> closets = new ArrayList<>();
 }

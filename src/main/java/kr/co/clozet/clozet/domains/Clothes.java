@@ -29,15 +29,24 @@ import javax.persistence.*;
 public class Clothes {
     @Id @GeneratedValue @Column(name = "clothes_id")
     private long clothesId;
-    @Column @NotNull private String season;
-    @Column @NotNull private String color;
-    @Column @NotNull private String date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "closet_id")
     private Closet closet;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "board_id")
-    private Board board;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne(mappedBy = "clothes")
+    private Color color;
+
+    @OneToOne(mappedBy = "clothes")
+    private Weather weather;
+
+    @OneToOne(mappedBy = "clothes")
+    private Style style;
+
+    @OneToOne(mappedBy = "clothes")
+    private Event event;    
 }
