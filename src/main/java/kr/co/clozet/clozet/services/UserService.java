@@ -29,6 +29,7 @@ public interface UserService {
 
     Messenger getOne(Long id);
     //custom
+    Messenger change(User user);
 
     List<User> findByUserName(String username);
 

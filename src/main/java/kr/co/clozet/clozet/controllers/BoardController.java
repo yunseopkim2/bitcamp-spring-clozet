@@ -53,7 +53,7 @@ public class BoardController {
 
 
     @GetMapping("/findById/{userId}")
-    public ResponseEntity<Optional<Board>> findByUserId(@PathVariable String userId) {
+    public ResponseEntity<Board> findByUserId(@PathVariable String userId) {
         return ResponseEntity.ok(service.findByUserId(userId));}
 
 

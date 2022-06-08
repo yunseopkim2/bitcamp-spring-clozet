@@ -1,10 +1,11 @@
 package kr.co.clozet.clozet.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,10 +28,13 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Getter
+@ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     @Id @GeneratedValue @Column(name = "user_id")
     private long userId;
-    @Column @NotNull private String username;
+    @Column
+    @NotNull private String username;
     @Column @NotNull private String password;
     @Column @NotNull private String name;
     @Column @NotNull private String birth;

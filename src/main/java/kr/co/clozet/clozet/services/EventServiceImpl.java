@@ -1,12 +1,11 @@
-package kr.co.clozet.clozet.controllers;
+package kr.co.clozet.clozet.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 /**
- * packageName    : kr.co.clozet.clozet.controllers
- * fileName       : ColorController
+ * packageName    : kr.co.clozet.clozet.services
+ * fileName       : EventServiceImpl
  * author         : kimyunseop
  * date           : 2022-06-08
  * description    :
@@ -15,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * -----------------------------------------------------------
  * 2022-06-08        kimyunseop       최초 생성
  */
-@RestController
-@RequestMapping("/color")
 @RequiredArgsConstructor
-public class ColorController {
+@Service
+public class EventServiceImpl {
 }

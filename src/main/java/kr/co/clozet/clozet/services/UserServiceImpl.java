@@ -64,8 +64,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> findAll() {
-        return repository.findAll();
+    public List<User> findAll() {return repository.findAll();
     }
 
     @Override
@@ -102,7 +101,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Messenger save(UserDTO user) {
-        return null;
+        Optional<User> users = repository.findById(1L);
+
+        users.ifPresent(selectUser-> {selectUser.getUserId();
+                                        selectUser.getBirth();
+                                        selectUser.getUsername();
+                                        selectUser.getEmail();
+                                        selectUser.getName();
+                                        selectUser.getPassword();
+                                        selectUser.getPhone();
+                                        repository.save(selectUser);
+        });
+        return Messenger.builder().message("저장되었습니다.").build();
     }
 
 
@@ -121,6 +131,23 @@ public class UserServiceImpl implements UserService {
     @Override
     public Messenger getOne(Long id) {
         return null;
+    }
+
+    @Override
+    public Messenger change(User user) {
+        Optional<User> updateUser = repository.findById(user.getUserId());
+        updateUser.ifPresent(selectUser ->{
+            selectUser.getUserId();
+            selectUser.getBirth();
+            selectUser.getUsername();
+            selectUser.getEmail();
+            selectUser.getName();
+            selectUser.getPassword();
+            selectUser.getPhone();
+            repository.save(selectUser);
+
+        });
+        return Messenger.builder().build();
     }
 
     @Override

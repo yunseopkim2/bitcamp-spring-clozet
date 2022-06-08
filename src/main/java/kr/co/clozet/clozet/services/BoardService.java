@@ -39,7 +39,7 @@ public interface BoardService {
     Messenger getOne(Long id);
     //custom
 
-    Optional<Board> findByUserId(String userId);
+    Board findByUserId(String userId);
 
     Messenger update(Board board);
 }

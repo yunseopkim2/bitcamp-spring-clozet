@@ -2,6 +2,7 @@ package kr.co.clozet.clozet.services;
 
 import kr.co.clozet.auth.domains.Messenger;
 import kr.co.clozet.clozet.domains.Board;
+import kr.co.clozet.clozet.repositories.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+import static kr.co.clozet.lambda.Lambda.string;
 
 /**
  * packageName    : kr.co.clozet.clozet.services
@@ -25,6 +28,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService{
+    private static BoardRepository repository;
 
     @Override
     public List<Board> findAll() {
@@ -72,8 +76,10 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public Optional<Board> findByUserId(String userId) {
-        return Optional.empty();
+    public Board findByUserId(String userId) {
+        Optional<Board> boardOptional = repository.findById(1L);
+        Board board = boardOptional.get();
+        return board;
     }
 
     @Override

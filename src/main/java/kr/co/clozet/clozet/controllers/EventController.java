@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * packageName    : kr.co.clozet.clozet.controllers
- * fileName       : ColorController
+ * fileName       : EventController
  * author         : kimyunseop
  * date           : 2022-06-08
  * description    :
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * 2022-06-08        kimyunseop       최초 생성
  */
 @RestController
-@RequestMapping("/color")
+@RequestMapping("/event")
 @RequiredArgsConstructor
-public class ColorController {
+public class EventController {
 }

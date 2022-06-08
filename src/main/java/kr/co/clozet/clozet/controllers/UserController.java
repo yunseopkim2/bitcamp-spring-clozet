@@ -46,6 +46,10 @@ public class UserController {
         return ResponseEntity.ok(service.login(user));
 
     }
+    @PutMapping("/change")
+    public ResponseEntity<Optional<User>> changeInfo(@RequestParam Long userId, @RequestBody User user){
+        return null;
+    }
     @GetMapping("/logout")
     public ResponseEntity<Messenger> logout() {return ResponseEntity.ok(service.logout());}
 
