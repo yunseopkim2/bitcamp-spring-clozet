@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 @CrossOrigin(origins = "*", allowedHeaders = "*") // 추가
@@ -50,8 +51,8 @@ public class UserController {
     public ResponseEntity<Optional<User>> changeInfo(@RequestParam Long userId, @RequestBody User user){
         return null;
     }
-    @GetMapping("/logout")
-    public ResponseEntity<Messenger> logout() {return ResponseEntity.ok(service.logout());}
+    @RequestMapping(value ="/logout", method = RequestMethod.GET)
+    public ResponseEntity<Messenger> logout(HttpServletRequest request) {return ResponseEntity.ok(service.logout(request));}
 
     @GetMapping("/findAll")
     public ResponseEntity<List<User>> findAll() {return ResponseEntity.ok(service.findAll());}
@@ -73,9 +74,9 @@ public class UserController {
         return ResponseEntity.ok(service.delete(user));}
 
 
-    @GetMapping("/findById/{userid}")
-    public ResponseEntity<Optional<User>> findById(@PathVariable String userid) {
-        return ResponseEntity.ok(service.findById(userid));}
+    @GetMapping("/findById/{userId}")
+    public ResponseEntity<Optional<User>> findById(@PathVariable Long userId) {
+        return ResponseEntity.ok(service.findById(userId));}
 
     @GetMapping("/existsById/{userid}")
     public ResponseEntity<Messenger> existsById(@PathVariable String userid) {

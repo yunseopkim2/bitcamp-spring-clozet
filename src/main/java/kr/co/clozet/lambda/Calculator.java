@@ -10,7 +10,9 @@ package kr.co.clozet.lambda;
  * ================================
  * 2022-02-19   kimyunseop   최초 생성
  */
+
 public class Calculator {
+
     public static void main(String... args) {
         var s = "계산기";
         System.out.println(s);

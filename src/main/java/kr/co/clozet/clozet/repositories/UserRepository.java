@@ -2,12 +2,14 @@ package kr.co.clozet.clozet.repositories;
 
 
 import kr.co.clozet.clozet.domains.User;
+import org.junit.jupiter.api.Test;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 interface UserCustomRepository{
@@ -17,10 +19,16 @@ interface UserCustomRepository{
     nativeQuery = true)
     String update( @Param("email") String email);
 
+    @Query(value = "select username from User")
+    List<User> findUsername();
+
 }
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long>, UserCustomRepository{
 
     Optional<User> findByUsername(String name);
+
+  @Override
+  List<User> findUsername();
 }

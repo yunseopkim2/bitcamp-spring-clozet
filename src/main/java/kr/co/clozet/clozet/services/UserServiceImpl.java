@@ -8,6 +8,8 @@ import kr.co.clozet.clozet.domains.UserDTO;
 import kr.co.clozet.clozet.repositories.UserRepository;
 import kr.co.clozet.lambda.dataStructure.Box;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
+import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,6 +27,7 @@ import static kr.co.clozet.lambda.Lambda.*;
 
 @RequiredArgsConstructor
 @Service
+@Log
 public class UserServiceImpl implements UserService {
 
     private final UserRepository repository;
@@ -58,8 +63,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Messenger logout() {
-        return Messenger.builder().build();
+    public Messenger logout(HttpServletRequest request){
+        log.info("logout Method 진입");
+        HttpSession session = request.getSession();
+        session.invalidate();
+        return Messenger.builder().message("로그아웃 완료").build();
     }
 
 
@@ -85,7 +93,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Messenger update(User user) {
-        return Messenger.builder().build();
+        final Optional<User> original = repository.findById(user.getUserId());
+        original.ifPresent(user1 -> {
+            User.builder().userId(user.getUserId())
+                    .name(user.getName())
+                    .nickname(user.getNickname())
+                    .email(user.getEmail())
+                    .phone(user.getPhone())
+                    .birth(user.getBirth())
+                    .username(user.getUsername())
+                    .build();
+            repository.save(user1);
+        });
+        return Messenger.builder().message("업데이트 완료").build();
     }
 
     @Override
@@ -95,8 +115,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Messenger delete(User user) {
-        repository.delete(user);
-       return Messenger.builder().build();
+        try{repository.delete(user);}
+        catch (Exception e){
+            log.info("error deleting entity");
+            throw new RuntimeException("error deleting entity"+ user.getUserId());
+        }
+       return Messenger.builder().message("삭제 완료").build();
     }
 
     @Override
@@ -117,8 +141,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public Optional<User> findById(String userid) {
-        return null;
+    public Optional<User> findById(Long userId) {
+        return repository.findById(userId);
     }
 
     @Override
@@ -159,4 +183,5 @@ public class UserServiceImpl implements UserService {
         return null;
 
     }
+
 }

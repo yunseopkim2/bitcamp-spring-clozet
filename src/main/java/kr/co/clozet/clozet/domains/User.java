@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.sun.istack.NotNull;
+import kr.co.clozet.clozet.repositories.UserRepository;
 import lombok.*;
+import org.junit.jupiter.api.Test;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -50,5 +52,6 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     List<Clothes> clothes = new ArrayList<>();
+
 
 }

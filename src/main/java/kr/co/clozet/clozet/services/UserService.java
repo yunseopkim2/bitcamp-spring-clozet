@@ -7,12 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
     UserDTO login(UserDTO user);
-    Messenger logout();
+    Messenger logout(HttpServletRequest request);
     List<User> findAll();
     List<User> findAll(Sort sort);
     Page<User> findAll(Pageable pageable);
@@ -23,7 +24,7 @@ public interface UserService {
 
     Messenger save(UserDTO user);
 
-    Optional<User> findById(String userid);
+    Optional<User> findById(Long userId);
 
     Messenger existsById(String userid);
 
