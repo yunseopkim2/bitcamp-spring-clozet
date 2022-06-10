@@ -1,13 +1,8 @@
 package kr.co.clozet.clozet.domains;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
 
@@ -22,7 +17,7 @@ import java.util.Map;
  * -----------------------------------------------------------
  * 2022-06-08        kimyunseop       최초 생성
  */
-public class JsonInputStreamToObject {
+public class JsonInputToObject {
     public static void main(String[] args) throws Exception {
 
         URL path = User.class.getResource("/user.json");
